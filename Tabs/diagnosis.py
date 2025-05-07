@@ -1,5 +1,5 @@
 import streamlit as st
-from web_functions_1 import predict
+from web_functions import predict
 import pandas as pd
 from fpdf import FPDF
 from datetime import datetime
@@ -7,7 +7,7 @@ import io
 import os
 import csv
 from dotenv import load_dotenv
-from llm_local1 import query_local_llm
+from llm_local import query_local_llm
 
 load_dotenv()
 
