@@ -110,9 +110,9 @@ def app(df, X, y):
             
             # Print the output according to the prediction
             if prediction == 1:
-                prediction_result = "The person has cardio problem"
+                prediction_result = "The person has cardiac problem"
             else:
-                prediction_result = "The person is free from diabetes"
+                prediction_result = "The person is free from cardiac issues."
                 st.success(prediction_result)
 
             # Print the score of the model
@@ -282,7 +282,7 @@ def app(df, X, y):
         
             def get_medication_recommendation(disease_type, patient_data):
                 prompt = f"""
-                You are a medical expert. Based on the following disease diagnosis, suggest the appropriate medications, their dosage, and additional lifestyle recommendations in the form of a proper table:
+                You are a medical expert. Based on the following disease diagnosis, suggest the appropriate medications, their dosage and appropriate time to take the dosage, and additional lifestyle recommendations in the form of a proper table:
                 
                 **Disease Type**: {disease_type}
                 
@@ -373,7 +373,7 @@ def app(df, X, y):
                         # Disease mapping
                         disease_type = ""
                         if prediction == 1:
-                            disease_type = "Cardio problem detected"
+                            disease_type = "Cardiac problem detected"
                         else:
                             disease_type = "No problem detected"
 
