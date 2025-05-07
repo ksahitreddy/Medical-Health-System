@@ -19,7 +19,7 @@ Tabs = {
 
 st.sidebar.title('Navigation')
 
-page = st.sidebar.radio("Page", list(Tabs.keys()))
+page = st.sidebar.selectbox("Page", list(Tabs.keys()))
 
 df, X, y = load_data()
 
