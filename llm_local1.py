@@ -4,7 +4,7 @@ import os
 from transformers import AutoTokenizer
 
 # 🆕 Replace this with your Groq API key
-GROQ_API_KEY = os.getenv("GROQ_API_KEY") or "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"
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 API_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL_NAME = "llama3-70b-8192"   # or "llama3-70b-8192"
 SYSTEM_PROMPT = "You are a medical chatbot specialized in all fields of medicine. Answer only medical or clinical related queries with medically accurate information. If a question is unrelated, politely inform the user that you can only answer medical-related questions. Provide a clear, concise, and accurate medical response"
