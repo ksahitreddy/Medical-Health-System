@@ -1,5 +1,5 @@
 import streamlit as st
-from llm_local1 import query_local_llm
+from llm_local import query_local_llm
 
 # Streamlit UI
 def app():
