@@ -310,7 +310,7 @@ def app(df, X, y):
                 **Patient Data**:
                 {patient_data}
                 
-                Provide a clear and structured recommendation including:
+                Provide a clear and structured recommendation in the form of a proper table including:
                 - Medication name
                 - Recommended dosage
                 - Special precautions
