@@ -1,7 +1,7 @@
 import streamlit as st
-from web_functions_1 import load_data
+from web_functions import load_data
 
-from Tabs import diagnosis_1, home, talk2doc_1
+from Tabs import diagnosis, home, talk2doc
 
 # Configure the app
 st.set_page_config(
@@ -13,8 +13,8 @@ st.set_page_config(
 
 Tabs = {
     "Home":home,
-    "Ask Queries":talk2doc_1,
-    "Diagnosis":diagnosis_1,
+    "Ask Queries":talk2doc,
+    "Diagnosis":diagnosis,
 }
 
 st.sidebar.title('Navigation')
