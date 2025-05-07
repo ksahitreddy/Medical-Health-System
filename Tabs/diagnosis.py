@@ -282,14 +282,14 @@ def app(df, X, y):
         
             def get_medication_recommendation(disease_type, patient_data):
                 prompt = f"""
-                You are a medical expert. Based on the following disease diagnosis, suggest the appropriate medications, their dosage, and additional lifestyle recommendations:
+                You are a medical expert. Based on the following disease diagnosis, suggest the appropriate medications, their dosage, and additional lifestyle recommendations in the form of a proper table:
                 
                 **Disease Type**: {disease_type}
                 
                 **Patient Data**:
                 {patient_data}
                 
-                Provide a clear and structured recommendation including:
+                Provide a clear and structured recommendation in the proper table including:
                 - Medication name
                 - Recommended dosage
                 - Special precautions
