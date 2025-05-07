@@ -55,60 +55,39 @@ def app(df, X, y):
                     'active': 0
                 }
             
-            # Custom CSS to reduce button spacing
-            st.markdown("""
-            <style>
-                div[data-testid="column"] {
-                    padding: 0 1px !important;
-                }
-                .stButton>button {
-                    min-width: 70%;
-                    margin: 1px 0;
-                }
-            </style>
-            """, unsafe_allow_html=True)
-            
-            # Cholesterol toggle buttons
-            st.write("Cholesterol")
-            col_chol = st.columns(3, gap="small")
-            for i in range(3):
-                label = f"{i+1}: {['Normal', 'Above Normal', 'Well above normal'][i]}"
-                if col_chol[i].button(label, key=f"chol_{i+1}"):
-                    st.session_state.selections['cholesterol'] = i + 1
+            # Cholesterol dropdown
+            cholesterol_options = ["1: Normal", "2: Above Normal", "3: Well above normal"]
+            selected_chol = st.selectbox("Cholesterol", cholesterol_options, 
+                                       index=st.session_state.selections['cholesterol']-1)
+            st.session_state.selections['cholesterol'] = int(selected_chol[0])
             pedigree = st.session_state.selections['cholesterol']
             
-            # Glucose toggle buttons
-            st.write("Glucose")
-            col_gluc = st.columns(3, gap="small")
-            for i in range(3):
-                label = f"{i+1}: {['Normal', 'Above Normal', 'Well above normal'][i]}"
-                if col_gluc[i].button(label, key=f"gluc_{i+1}"):
-                    st.session_state.selections['glucose'] = i + 1
+            # Glucose dropdown
+            glucose_options = ["1: Normal", "2: Above Normal", "3: Well above normal"]
+            selected_gluc = st.selectbox("Glucose", glucose_options,
+                                       index=st.session_state.selections['glucose']-1)
+            st.session_state.selections['glucose'] = int(selected_gluc[0])
             age = st.session_state.selections['glucose']
             
-            # Binary toggle buttons
-            st.write("Smoke")
-            col_smoke = st.columns(2, gap="small")
-            if col_smoke[0].button("No", key="smoke_no"):
-                st.session_state.selections['smoke'] = 0
-            if col_smoke[1].button("Yes", key="smoke_yes"):
-                st.session_state.selections['smoke'] = 1
+            # Binary dropdowns
+            yes_no_options = ["No", "Yes"]
+            
+            # Smoke dropdown
+            selected_smoke = st.selectbox("Smoke", yes_no_options,
+                                        index=st.session_state.selections['smoke'])
+            st.session_state.selections['smoke'] = yes_no_options.index(selected_smoke)
             preg = st.session_state.selections['smoke']
             
-            st.write("Alcohol")
-            col_alco = st.columns(2, gap="small")
-            if col_alco[0].button("No", key="alco_no"):
-                st.session_state.selections['alcohol'] = 0
-            if col_alco[1].button("Yes", key="alco_yes"):
-                st.session_state.selections['alcohol'] = 1
+            # Alcohol dropdown
+            selected_alco = st.selectbox("Alcohol", yes_no_options,
+                                       index=st.session_state.selections['alcohol'])
+            st.session_state.selections['alcohol'] = yes_no_options.index(selected_alco)
             alcoh = st.session_state.selections['alcohol']
             
-            st.write("Active")
-            col_active = st.columns(2, gap="small")
-            if col_active[0].button("No", key="active_no"):
-                st.session_state.selections['active'] = 0
-            if col_active[1].button("Yes", key="active_yes"):
-                st.session_state.selections['active'] = 1
+            # Active dropdown
+            selected_active = st.selectbox("Active", yes_no_options,
+                                         index=st.session_state.selections['active'])
+            st.session_state.selections['active'] = yes_no_options.index(selected_active)
             activ = st.session_state.selections['active']
         # Create a list to store all the features
         features = [hba1c, glucose, bp, skinthickness, insulin, bmi, pedigree, age, preg, alcoh, activ]
@@ -310,7 +289,7 @@ def app(df, X, y):
                 **Patient Data**:
                 {patient_data}
                 
-                Provide a clear and structured recommendation in the form of a proper table including:
+                Provide a clear and structured recommendation including:
                 - Medication name
                 - Recommended dosage
                 - Special precautions
